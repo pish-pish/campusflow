@@ -3,16 +3,18 @@
 CampusFlow is a React-powered portal for Florida Tech students to browse upcoming campus events, search and filter them, and export details to personal calendars. The app ships with offline-friendly sample data and requires no external credentials to run.
 
 ## Prerequisites
-- Node.js 12+
-- npm or yarn
+- Node.js 16+
+- npm
 
 ## Getting started
 Install dependencies:
 ```bash
 npm install
-# or
-yarn
 ```
+
+> Note: the previous Yarn lockfile was removed to avoid pinning deprecated
+> versions of `node-sass`; use npm to ensure the updated dependency set is
+> installed.
 
 Run the development server:
 ```bash
