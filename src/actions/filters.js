@@ -1,22 +1,14 @@
 export const setTextFilter = (text = '') => ({
-    type: "ADD_FILTER",
-    text: text
-});
-  
-export const setStartDate = startDate => ({
-  type: "SET_START_DATE",
-  startDate
+  type: 'SET_TEXT_FILTER',
+  text
 });
 
-export const setEndDate = endDate => ({
-  type: "SET_END_DATE",
-  endDate
+export const setCategoryFilter = (category = 'All') => ({
+  type: 'SET_CATEGORY_FILTER',
+  category
 });
 
-export const sortByLikes = () => ({
-  type: "SORT_BY_LIKES",
-});
-
-export const sortByDate = () => ({
-  type: "SORT_BY_DATE",
+export const setCostTypeFilter = (costType = 'All') => ({
+  type: 'SET_COST_FILTER',
+  costType
 });
