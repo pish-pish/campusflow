@@ -24,6 +24,13 @@ const formatDateTime = (value) =>
 const focusManager = new FocusManager();
 
 export const EventCard = ({ event }) => {
+  // Hook must always be called; we guard inside it
+  useEffect(() => {
+    if (!event) return;
+    focusManager.trap('#event-title');
+    return () => focusManager.restore();
+  }, [event]);
+
   if (!event) {
     return (
       <div className="content-container event-card">
@@ -35,11 +42,6 @@ export const EventCard = ({ event }) => {
 
   const icsContent = buildICSFile(event);
   const googleCalendarUrl = buildGoogleCalendarUrl(event);
-
-  useEffect(() => {
-    focusManager.trap('#event-title');
-    return () => focusManager.restore();
-  }, []);
 
   const downloadIcs = () => {
     const element = document.createElement('a');
@@ -62,24 +64,42 @@ export const EventCard = ({ event }) => {
       </div>
       <div className="event-card__others">
         <div>
-          <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {event.location}</p>
+          <p>
+            <FontAwesomeIcon icon={faMapMarkerAlt} /> {event.location}
+          </p>
           <p>Organizer: {event.organizer}</p>
           <p>Category: {event.category}</p>
           <p>Cost: {event.costType}</p>
         </div>
         <div>
-          <p><FontAwesomeIcon icon={faCalendarAlt} /> {formatDateTime(event.startDateTime)}</p>
-          <p><FontAwesomeIcon icon={faClock}/> Ends {formatDateTime(event.endDateTime)}</p>
+          <p>
+            <FontAwesomeIcon icon={faCalendarAlt} />{' '}
+            {formatDateTime(event.startDateTime)}
+          </p>
+          <p>
+            <FontAwesomeIcon icon={faClock} /> Ends{' '}
+            {formatDateTime(event.endDateTime)}
+          </p>
         </div>
       </div>
       <div className="event-card__register">
         <button className="btn-primary" onClick={downloadIcs}>
           <FontAwesomeIcon icon={faDownload} /> Download .ics
         </button>
-        <a className="btn-secondary" href={googleCalendarUrl} target="_blank" rel="noopener noreferrer">
+        <a
+          className="btn-secondary"
+          href={googleCalendarUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Add to Google Calendar <FontAwesomeIcon icon={faExternalLinkAlt} />
         </a>
-        <a className="btn-secondary" href={event.sourceUrl} target="_blank" rel="noopener noreferrer">
+        <a
+          className="btn-secondary"
+          href={event.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           View source
         </a>
       </div>
