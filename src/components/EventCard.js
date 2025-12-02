@@ -61,7 +61,12 @@ export const EventCard = ({ event }) => {
   useEffect(() => {
     if (!event) return;
     focusManager.trap('#event-title');
-    return () => focusManager.restore();
+    // Update page title
+    document.title = `${event.title} | CampusFlow`;
+    return () => {
+      focusManager.restore();
+      document.title = 'CampusFlow';
+    };
   }, [event]);
 
   if (!event) {

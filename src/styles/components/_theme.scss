@@ -99,26 +99,29 @@ body,
 // ============================================
 
 [data-theme="light"] {
-  // Body background
+  // Override the header background variable
+  --header-bg: transparent;
+
   body {
-    background: var(--color-surface);
+    background: #f8fafc;
   }
 
-  // Header adjustments
   .header {
-    background: var(--header-bg);
-    border-bottom-color: var(--color-border-light);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .header__title h1 {
-    color: var(--header-text);
+    color: var(--color-primary, #{$primary});
   }
 
   .header__nav-link {
-    color: rgba(255, 255, 255, 0.9);
-    
+    color: var(--color-text-primary, #{$text-primary});
+
     &:hover {
-      color: #ffffff;
+      color: var(--color-primary, #{$primary});
     }
   }
 
@@ -256,4 +259,103 @@ body,
     outline-offset: 2px;
     border-radius: var(--radius-sm, #{$radius-sm});
   }
+}
+
+// ============================================
+// BREADCRUMB STYLING
+// ============================================
+
+.event-card-page__breadcrumb {
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+}
+
+.event-card-page__breadcrumb-link {
+  font-size: 1.1rem;
+  color: var(--color-primary, #{$primary});
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.event-card-page__breadcrumb-current {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary, #{$text-secondary});
+}
+
+.event-card-page__breadcrumb-separator {
+  margin: 0 0.75rem;
+  font-size: 0.9rem;
+}
+
+// ============================================
+// CLICKABLE EVENT CARD
+// ============================================
+
+.event-list-item--clickable {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg, #{$shadow-lg});
+    text-decoration: none;
+  }
+
+  * {
+    text-decoration: none;
+  }
+
+  .event-list-item__title:hover {
+    text-decoration: none;
+  }
+}
+
+// ============================================
+// THEME SWITCH TOGGLE
+// ============================================
+
+.theme-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.theme-switch__label {
+  font-size: 1rem;
+}
+
+.theme-switch__track {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  transition: background 0.3s ease;
+}
+
+.theme-switch__track--dark {
+  background: var(--color-primary, #{$primary});
+}
+
+.theme-switch__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.theme-switch__track--dark .theme-switch__thumb {
+  transform: translateX(22px);
 }

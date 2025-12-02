@@ -76,7 +76,7 @@ export const EventListItem = ({
   costType, 
   shortDescription 
 }) => (
-  <article className="event-list-item">
+  <Link to={`/event/${id}`} className="event-list-item event-list-item--clickable">
     <div className="event-list-item__content">
       {/* Header with Category Badge */}
       <div className="event-list-item__header">
@@ -137,15 +137,14 @@ export const EventListItem = ({
       </div>
     </div>
 
-    {/* Action Button */}
-    <Link 
-      to={`/event/${id}`} 
+    {/* Action Button - Visual indicator only (card is clickable) */}
+    <div 
       className="event-list-item__action"
-      aria-label={`View details for ${title}`}
+      aria-hidden="true"
     >
       <FontAwesomeIcon icon={faArrowRight} />
-    </Link>
-  </article>
+    </div>
+  </Link>
 );
 
 export default EventListItem;

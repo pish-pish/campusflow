@@ -106,11 +106,6 @@ const EventFilters = ({ filters, categories, dispatch, eventCount }) => {
                 onClick={() => dispatch(setCategoryFilter(category))}
               >
                 {category}
-                {filters.category === category && (
-                  <span className="event-filters__chip-badge" aria-label="Active filter">
-                    {activeFilterCount}
-                  </span>
-                )}
               </button>
             ))}
           </div>
@@ -128,11 +123,6 @@ const EventFilters = ({ filters, categories, dispatch, eventCount }) => {
                 onClick={() => dispatch(setCostTypeFilter(costType))}
               >
                 {costType}
-                {filters.costType === costType && filters.costType !== 'All' && (
-                  <span className="event-filters__chip-badge" aria-label="Active filter">
-                    {activeFilterCount}
-                  </span>
-                )}
               </button>
             ))}
           </div>
@@ -154,11 +144,6 @@ const EventFilters = ({ filters, categories, dispatch, eventCount }) => {
                 onClick={() => dispatch(setTimeRangeFilter(value))}
               >
                 {label}
-                {filters.timeRange === value && filters.timeRange !== 'all' && (
-                  <span className="event-filters__chip-badge" aria-label="Active filter">
-                    {activeFilterCount}
-                  </span>
-                )}
               </button>
             ))}
           </div>

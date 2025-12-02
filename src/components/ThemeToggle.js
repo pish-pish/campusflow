@@ -1,24 +1,21 @@
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 const ThemeToggle = () => {
-  const { theme, toggleTheme, isDark } = useTheme();
+  const { isDark, toggleTheme } = useTheme();
 
   return (
     <button
-      className="theme-toggle"
+      className="theme-switch"
       onClick={toggleTheme}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >
-      <span className="theme-toggle__icon-wrapper">
-        <FontAwesomeIcon 
-          icon={isDark ? faSun : faMoon} 
-          className="theme-toggle__icon"
-        />
+      <span className="theme-switch__label">☀️</span>
+      <span className={`theme-switch__track ${isDark ? 'theme-switch__track--dark' : ''}`}>
+        <span className="theme-switch__thumb"></span>
       </span>
+      <span className="theme-switch__label">🌙</span>
     </button>
   );
 };
