@@ -166,6 +166,33 @@ export const events = [
     longDescription:
       'Join facilities staff for a guided tour of campus sustainability projects including solar arrays, green roofs, and water reuse systems.',
     sourceUrl: 'https://events.fit.edu/sustainability-tour'
+  },
+  {
+    id: '13',
+    title: 'Pi Lambda Phi - Push Out Prejudice',
+    startDateTime: '2025-12-02T10:00:00-04:00',
+    endDateTime: '2025-12-02T16:00:00-04:00',
+    location: 'Panther Plaza',
+    organizer: 'Pi Lambda Phi',
+    category: 'Social',
+    costType: 'Free',
+    shortDescription: 'Push Out Prejudice one push up at a time.',
+    longDescription:
+      'Join Pi Lambda Phi in an event where one pushup is one cent donated towards Girl Against Violence an organization committed to ending gender based violence.',
+    sourceUrl: 'https://floridatech.campuslabs.com/engage/event/11892472'
+  },{
+    id: '14',
+    title: 'Panther Wellness - President Walking Club',
+    startDateTime: '2025-12-05T12:00:00-04:00',
+    endDateTime: '2025-12-05T12:30:00-04:00',
+    location: 'Meet outside the Denius Student Center',
+    organizer: 'Human Resources',
+    category: 'Social',
+    costType: 'Free',
+    shortDescription: 'Its time to start walking Florida Techs beautiful campus, and join the Presidents Walking Club for Fall 2025!',
+    longDescription:
+      'President Nicklow and Dr. Stacys Weekly Walking Club is designed to Provide an easy way to exercise and Create a social connection. Please bring water, wear sunscreen, wear a hat or bring a parasol. Wear comfortable clothes and shoes',
+    sourceUrl: 'https://floridatech.campuslabs.com/engage/event/11672772'
   }
 ];
 
