@@ -50,12 +50,18 @@ const formatTimeRange = (start, end) => {
 // Category color mapping
 const getCategoryColor = (category) => {
   const colors = {
-    'Academic': '#6366f1', // Indigo
-    'Social': '#8b5cf6',  // Purple
-    'Sports': '#f97316',   // Orange
-    'Workshop': '#22c55e', // Green
-    'Cultural': '#ec4899', // Pink
-    'General': '#64748b'   // Slate
+    'Academic': '#6366f1',        // Indigo (blue-purple)
+    'Social': '#a855f7',          // Purple
+    'Career': '#f59e0b',          // Amber (yellow-orange)
+    'STEM': '#3b82f6',            // Blue
+    'Entrepreneurship': '#f97316', // Orange
+    'Athletics': '#ef4444',       // Red
+    'Networking': '#06b6d4',      // Cyan (light blue)
+    'Sustainability': '#84cc16',  // Lime (yellow-green)
+    'Sports': '#dc2626',          // Dark Red
+    'Workshop': '#8b5cf6',        // Violet
+    'Cultural': '#ec4899',        // Pink
+    'General': '#64748b'          // Slate (gray)
   };
   return colors[category] || colors['General'];
 };
@@ -118,7 +124,14 @@ export const EventListItem = ({
           <div className="event-list-item__meta-item">
             <FontAwesomeIcon icon={faMapMarkerAlt} className="event-list-item__meta-icon" />
             <span className="event-list-item__meta-label">Location</span>
-            <span className="event-list-item__meta-value">{location}</span>
+            <a 
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location + ' Florida Tech')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="event-list-item__meta-value event-list-item__meta-link"
+            >
+              {location}
+            </a>
           </div>
         )}
       </div>

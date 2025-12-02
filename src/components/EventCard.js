@@ -160,7 +160,14 @@ export const EventCard = ({ event }) => {
             </div>
             <div className="event-card-page__info-card-content">
               <h3 className="event-card-page__info-card-label">Location</h3>
-              <p className="event-card-page__info-card-value">{event.location}</p>
+              <a 
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location + ' Florida Tech')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="event-card-page__info-card-value event-card-page__info-card-link"
+              >
+                {event.location}
+              </a>
             </div>
           </div>
 
