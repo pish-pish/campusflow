@@ -1,282 +1,279 @@
+// ============================================
+// HEADER - Glassmorphism Design
+// ============================================
+
+@import '../base/settings';
+
 .header {
-  background: lighten(#2E3740, 5%);
+  background: rgba($surface, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   position: sticky;
-  top:0;
+  top: 0;
   width: 100%;
   z-index: 100;
-  border-bottom: 1px solid #2E3740;
+  border-bottom: 1px solid rgba($text-secondary, 0.1);
+  box-shadow: var(--shadow-sm, #{$shadow-sm});
 }
 
 .header__content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $xs-size $m-size;
-}
+  padding: var(--spacing-md, #{$spacing-md}) var(--spacing-lg, #{$spacing-lg});
+  max-width: 1400px;
+  margin: 0 auto;
 
-.mobile{
-  @media screen and (max-width: $desktop-breakpoint) {
-    display: none;
+  @media (max-width: $desktop-breakpoint) {
+    padding: var(--spacing-sm, #{$spacing-sm}) var(--spacing-md, #{$spacing-md});
   }
 }
 
-.desktop{
-  @media screen and (min-width: $desktop-breakpoint) {
-    display: none;
-  }
-}
+// ============================================
+// HEADER TITLE / LOGO
+// ============================================
+
 .header__title {
   display: flex;
-  color:  $orange;
+  align-items: center;
+  gap: var(--spacing-sm, #{$spacing-sm});
+  color: var(--color-text-primary, #{$text-primary});
   text-decoration: none;
-  h1 {
-    margin: 0;
-  }
-  img{
-    height: 5rem;
-    margin: 0 1rem 0 0;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
   }
 
-  @media(max-width: $desktop-breakpoint){
-    img{
-      height: 5rem;
-      margin: 0 0.5rem 0 0;
+  &:focus-visible {
+    outline: 2px solid var(--color-primary, #{$primary});
+    outline-offset: 2px;
+    border-radius: var(--radius-sm, #{$radius-sm});
+  }
+
+  img {
+    height: 2.5rem; // 40px - Better sizing
+    width: auto;
+    display: block;
+
+    @media (max-width: $desktop-breakpoint) {
+      height: 2rem; // 32px on mobile
     }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--font-size-xl, #{$font-size-xl});
+    font-weight: 600;
+    letter-spacing: -0.5px;
+
+    @media (max-width: $desktop-breakpoint) {
+      font-size: var(--font-size-lg, #{$font-size-lg});
+    }
+  }
+}
+
+// ============================================
+// NAVIGATION
+// ============================================
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg, #{$spacing-lg});
+}
+
+.header__nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg, #{$spacing-lg});
+
+  @media (max-width: $desktop-breakpoint) {
+    display: none;
   }
 }
 
 .header__nav-link {
-  color: $blush;
-  font-weight: 600;
-  margin-left: $m-size;
-}
+  color: var(--color-text-primary, #{$text-primary});
+  font-weight: 500;
+  font-size: var(--font-size-base, #{$font-size-base});
+  padding: var(--spacing-xs, #{$spacing-xs}) 0;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.2s ease;
 
-.header__chat-button{
-  color:$f;
-  cursor: pointer;
-  &:focus{
-    color: $pink;
-    pointer-events: none;
+  // Underline animation on hover
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary, #{$primary});
+    transition: width 0.3s ease;
   }
-}
-.header__links{
-  margin:0;
-  & input{
-    opacity: 0;
-    margin: 0;
-  }
-  & ul{
-    margin:0;
-    & button{
-      background: transparent;
-      border: none;
-      outline: none;
-      // color:$blush;
-      margin-right: 3rem;
+
+  &:hover {
+    color: var(--color-primary, #{$primary});
+
+    &::after {
+      width: 100%;
     }
   }
 
+  &:focus-visible {
+    outline: 2px solid var(--color-primary, #{$primary});
+    outline-offset: 4px;
+    border-radius: var(--radius-sm, #{$radius-sm});
+  }
+
+  &.is-active {
+    color: var(--color-primary, #{$primary});
+
+    &::after {
+      width: 100%;
+    }
+  }
 }
 
-#menuToggle > button , a > button{
-  color: $blush;
-}
+// ============================================
+// MOBILE MENU TOGGLE (Hamburger)
+// ============================================
 
-.scale:hover{
-  transform: scale(1.2);
-  transition: transform 0.2s ease;
-}
-
-.header__notification-button{
+.header__mobile-toggle {
+  display: none;
   background: transparent;
   border: none;
-  // color: $blush;
-  position: relative;
-}
-
-.header__notification-button[data-badge]:after {
-  content:attr(data-badge);
-  position:absolute;
-  top:-10px;
-  right:-10px;
-  font-size:.7em;
-  background:$blue;
-  color: $dark-grey;
-  width:18px;height:18px;
-  text-align:center;
-  line-height:18px;
-  border-radius:50%;
-  box-shadow:0 0 1px #333;
-}
-
-#toggler{
-  
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 3;
-  opacity: 0;
-  height: 5rem;
-  width: 5rem;
+  padding: var(--spacing-xs, #{$spacing-xs});
   cursor: pointer;
-}
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  border-radius: var(--radius-sm, #{$radius-sm});
+  transition: background 0.2s ease;
 
-#menu{
-  @media (min-width: $desktop-breakpoint){
-    display: none;
-  }
-
-  & button{
-    color: $blush;
-    font-size: $font-size-2x;
-    padding: 0 0 8rem 0;
-  }
-
-  & ul{
-    padding: 0;
-  }
-}
-
-#desktop-menu{
-  @media (max-width: $desktop-breakpoint){
-    display: none;
-  }
-}
-
-
-#toggler:checked ~ #menu {
-  visibility: visible;
-}
-
-#toggler:checked ~ #menu > div{
-  transform: scale(1);
-  transition-duration: 0.75s;
-}
-
-#toggler:checked ~ #menu > div > div{
-  opacity: 1;
-  transition: opacity 0.4s ease 0.4s;
-}
-@media (max-width: $desktop-breakpoint){
-
-  
-  #hamburger{
-    position: absolute;
-    top: 1rem;
-    right: 0;
-    z-index:2;
-    width: 5rem;
-    height: 5rem;
-    padding: 1rem;
+  @media (max-width: $desktop-breakpoint) {
     display: flex;
-    justify-content: center;
-    align-content: center;
-    margin: 1rem;
-  
-    & > div{
-      position: relative;
-      width:100%;
-      height: 3px;
-      border-radius: 3px;
-      background-color: $orange;  
-      display: flex;
-      justify-items: center;
-      align-items: center;
-      transition: all 0.4s ease;
-    }
-  
-    //top line
-    & > div:before, & >div:after{
-      content: '';
-      position: absolute;
-      z-index: 2;
-      top:-10px;
-      width: 100%;
-      height: 3px;
-      border-radius: 3px;
-      background-color: inherit;
-    }
-  //bottom line
-    & >div:after{
-      top: 10px
-    }
   }
-  
-  //toggler animate
-  #toggler:checked + #hamburger > div{
-    transform: rotate(135deg);
-    &:before, &:after{
-      top:0;
-      transform: rotate(90deg);
-    }
-  }
-  
-  #toggler:checked:hover + #hamburger > d {
-    transform: rotate(225deg);
-  }
-  
-  
-  //show menu 
 
+  &:hover {
+    background: rgba($text-secondary, 0.1);
+  }
 
-  #menu{
-    position: fixed;
-    top: 0;
-    right: 0;
+  &:focus-visible {
+    outline: 2px solid var(--color-primary, #{$primary});
+    outline-offset: 2px;
+  }
+
+  &[aria-expanded="true"] {
+    .header__hamburger {
+      span {
+        &:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+      }
+    }
+  }
+}
+
+.header__hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 24px;
+  height: 18px;
+  position: relative;
+
+  span {
+    display: block;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    visibility: hidden;
-
-  & > div{
-    background:$white;
-    border-radius: 50%;
-    width: 150vw;
-    height: 135vh;
-    display: flex;
-    flex: none;
-    align-items: center;
-    justify-content: center;
-    transform: scale(0);
-    transition: all 0.4s ease;
-    position: relative;
+    height: 2px;
+    background: var(--color-text-primary, #{$text-primary});
+    border-radius: 2px;
+    transition: all 0.3s ease;
   }
+}
 
-  & > div > div{
-    text-align: center;
-    max-width: 90vw;
-    max-height: 100vh;
+// ============================================
+// MOBILE MENU
+// ============================================
+
+.header__mobile-menu {
+  display: none;
+  background: rgba($surface-elevated, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba($text-secondary, 0.1);
+  box-shadow: var(--shadow-lg, #{$shadow-lg});
+
+  @media (max-width: $desktop-breakpoint) {
+    display: block;
+    animation: slideDown 0.3s ease;
+  }
+}
+
+@keyframes slideDown {
+  from {
     opacity: 0;
-    transition: opacity 0.4s ease;
-    }
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  & > div > div > ul {
-    color:white;
-    font-size: $font-size-small;
-    display: flex;
-    flex-direction: column;    
-    margin: 0;
-  }
-  
-  & > div > div > ul > a {
-    color: inherit;
-    outline: none;
-    margin: 1rem 0;
-    text-decoration: none;
-    transition: color 0.4s ease;
+.header__mobile-nav {
+  padding: var(--spacing-md, #{$spacing-md});
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm, #{$spacing-sm});
+}
+
+.header__mobile-link {
+  color: var(--color-text-primary, #{$text-primary});
+  text-decoration: none;
+  font-weight: 500;
+  font-size: var(--font-size-base, #{$font-size-base});
+  padding: var(--spacing-sm, #{$spacing-sm}) var(--spacing-md, #{$spacing-md});
+  border-radius: var(--radius-md, #{$radius-md});
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba($primary, 0.1);
+    color: var(--color-primary, #{$primary});
   }
 
-  & > div > div > ul > a:hover {
-    font-weight: 800;
-    color:$skin;
-    margin: 1rem 0;
+  &:focus-visible {
+    outline: 2px solid var(--color-primary, #{$primary});
+    outline-offset: 2px;
   }
+}
 
-  & > div > div > ul > button {
-    margin: 1rem 0;
+// ============================================
+// UTILITY CLASSES (Legacy support)
+// ============================================
+
+.mobile {
+  @media (min-width: $desktop-breakpoint) {
+    display: none;
   }
-}}
+}
+
+.desktop {
+  @media (max-width: $desktop-breakpoint) {
+    display: none;
+  }
+}

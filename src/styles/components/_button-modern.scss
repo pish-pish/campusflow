@@ -1,0 +1,417 @@
+// =============================================
+// BUTTON STYLES - Modern & Consistent
+// =============================================
+
+@import '../base/design-system';
+
+// Base Button Reset
+%button-base {
+  @include button-reset;
+  font-family: $font-primary;
+  font-weight: $font-medium;
+  border-radius: $radius-md;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  @include smooth-transition(all);
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// =============================================
+// PRIMARY BUTTON - Main CTA
+// =============================================
+
+.btn-primary,
+.button-primary {
+  @extend %button-base;
+  
+  background: linear-gradient(135deg, $primary-orange 0%, darken($primary-orange, 5%) 100%);
+  color: white;
+  padding: $space-md $space-lg;
+  font-size: $font-size-sm;
+  box-shadow: $elevation-1;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, darken($primary-orange, 3%) 0%, darken($primary-orange, 8%) 100%);
+    box-shadow: $elevation-2;
+    transform: translateY(-2px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: $elevation-1;
+  }
+
+  // Size variants
+  &.sm {
+    padding: $space-sm $space-md;
+    font-size: $font-size-xs;
+  }
+
+  &.lg {
+    padding: $space-lg $space-xl;
+    font-size: $font-size-base;
+  }
+
+  &.full {
+    width: 100%;
+  }
+}
+
+// =============================================
+// SECONDARY BUTTON - Alternative CTA
+// =============================================
+
+.btn-secondary,
+.button-secondary {
+  @extend %button-base;
+  
+  background: $card-bg;
+  color: $primary-orange;
+  padding: $space-md $space-lg;
+  font-size: $font-size-sm;
+  border: 2px solid $primary-orange;
+  box-shadow: $elevation-1;
+
+  &:hover:not(:disabled) {
+    background: rgba($primary-orange, 0.1);
+    box-shadow: $elevation-2;
+    transform: translateY(-2px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: $elevation-1;
+  }
+
+  &.sm {
+    padding: $space-sm $space-md;
+    font-size: $font-size-xs;
+  }
+
+  &.lg {
+    padding: $space-lg $space-xl;
+    font-size: $font-size-base;
+  }
+
+  &.full {
+    width: 100%;
+  }
+}
+
+// =============================================
+// TERTIARY BUTTON - Ghost/Text button
+// =============================================
+
+.btn-tertiary,
+.button-tertiary {
+  @extend %button-base;
+  
+  background: transparent;
+  color: $primary-blue;
+  padding: $space-md $space-lg;
+  font-size: $font-size-sm;
+  text-decoration: none;
+
+  &:hover:not(:disabled) {
+    background: rgba($primary-blue, 0.1);
+  }
+
+  &:active:not(:disabled) {
+    background: rgba($primary-blue, 0.15);
+  }
+}
+
+// =============================================
+// ICON BUTTON - Compact, icon-only
+// =============================================
+
+.btn-icon {
+  @extend %button-base;
+  
+  background: transparent;
+  color: $text-dark;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  padding: $space-md;
+
+  &:hover {
+    background: $hover-overlay;
+    color: $primary-orange;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &.sm {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    padding: $space-xs;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+// =============================================
+// LINK BUTTON - Text link styled button
+// =============================================
+
+.btn-link {
+  @extend %button-base;
+  
+  background: transparent;
+  color: $primary-orange;
+  padding: 0;
+  border-radius: 0;
+  font-size: $font-size-sm;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+
+  &:hover:not(:disabled) {
+    color: darken($primary-orange, 10%);
+  }
+}
+
+// =============================================
+// DANGER BUTTON - Destructive actions
+// =============================================
+
+.btn-danger {
+  @extend %button-base;
+  
+  background: $error;
+  color: white;
+  padding: $space-md $space-lg;
+  font-size: $font-size-sm;
+  box-shadow: $elevation-1;
+
+  &:hover:not(:disabled) {
+    background: darken($error, 5%);
+    box-shadow: $elevation-2;
+    transform: translateY(-2px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+// =============================================
+// SUCCESS BUTTON
+// =============================================
+
+.btn-success {
+  @extend %button-base;
+  
+  background: $success-green;
+  color: white;
+  padding: $space-md $space-lg;
+  font-size: $font-size-sm;
+  box-shadow: $elevation-1;
+
+  &:hover:not(:disabled) {
+    background: darken($success-green, 5%);
+    box-shadow: $elevation-2;
+    transform: translateY(-2px);
+  }
+}
+
+// =============================================
+// FLOATING ACTION BUTTON
+// =============================================
+
+.btn-floating {
+  @extend %button-base;
+  
+  background: $primary-orange;
+  color: white;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  border-radius: $radius-full;
+  box-shadow: $elevation-3;
+  position: fixed;
+  bottom: $space-xl;
+  right: $space-xl;
+  z-index: 50;
+
+  @include mobile-only {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    bottom: $space-lg;
+    right: $space-lg;
+  }
+
+  &:hover {
+    box-shadow: $elevation-3;
+    transform: scale(1.1);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// =============================================
+// BUTTON GROUPS
+// =============================================
+
+.button-group {
+  display: flex;
+  gap: $space-md;
+  flex-wrap: wrap;
+
+  @include mobile-only {
+    flex-direction: column;
+  }
+
+  &.inline {
+    flex-direction: row;
+  }
+
+  button,
+  a {
+    flex: 1;
+    min-width: 120px;
+
+    @include mobile-only {
+      width: 100%;
+    }
+  }
+}
+
+// =============================================
+// LOADING STATE
+// =============================================
+
+.btn-loading {
+  position: relative;
+  color: transparent;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: $radius-full;
+    border-top-color: white;
+    animation: spin 0.6s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// =============================================
+// BUTTON WITH ICON
+// =============================================
+
+.btn-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-sm;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &.icon-right {
+    flex-direction: row-reverse;
+  }
+}
+
+// =============================================
+// DEPRECATED - Legacy button classes (for backward compatibility)
+// =============================================
+
+.button-primary {
+  @extend .btn-primary;
+}
+
+.button-secondary {
+  @extend .btn-secondary;
+}
+
+.button-logout {
+  @extend .btn-secondary;
+}
+
+.button-submit {
+  @extend .btn-primary;
+}
+
+// Dropdown button (legacy)
+.button-dropbtn {
+  @extend %button-base;
+  background: transparent;
+  color: $primary-orange;
+  padding: $space-md 0;
+
+  &:hover {
+    color: darken($primary-orange, 10%);
+  }
+}
+
+.button-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.button-dropdown__content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: $card-bg;
+  border-radius: $radius-md;
+  box-shadow: $elevation-2;
+  z-index: 10;
+  min-width: 200px;
+  overflow: hidden;
+
+  button {
+    @extend .btn-tertiary;
+    width: 100%;
+    padding: $space-md $space-lg;
+    border-radius: 0;
+    justify-content: flex-start;
+    font-size: $font-size-sm;
+
+    &:hover {
+      background: $hover-overlay;
+    }
+  }
+}
+
+.button-dropdown:hover .button-dropdown__content {
+  display: flex;
+  flex-direction: column;
+}

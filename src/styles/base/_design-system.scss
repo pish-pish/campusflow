@@ -1,0 +1,163 @@
+// =============================================
+// CAMPUSFLOW DESIGN SYSTEM
+// Modern, cohesive design for web application
+// =============================================
+
+// COLOR PALETTE - Carefully selected for contrast and harmony
+// Primary Colors
+$primary-blue: #2d4e68;        // Deep, trustworthy blue
+$primary-orange: #f76c6c;      // Warm, energetic accent
+$primary-pink: #eb6e80;        // Soft, friendly accent
+
+// Secondary Colors
+$success-green: #5ad67d;       // Positive actions
+$warning-yellow: #ffdc6a;      // Alerts, attention
+$info-cyan: #94f0f1;           // Information, interactive
+
+// Neutrals
+$dark-bg: #1a1f2e;             // Deep, clean background
+$card-bg: #ffffff;             // Card backgrounds
+$text-dark: #2E3740;           // Primary text
+$text-light: #74a8b3;          // Secondary text
+$text-muted: #a2a2a2;          // Muted text
+$border-light: #e2e2e2;        // Light borders
+
+// Semantic Colors
+$error: #e74c3c;
+$hover-overlay: rgba(0, 0, 0, 0.04);
+
+// TYPOGRAPHY SYSTEM - Consistent, readable
+$font-primary: 'Quicksand', 'Open Sans', sans-serif;
+$font-secondary: 'Pathway Gothic One', sans-serif;
+$font-code: 'Courier New', monospace;
+
+// Font Sizes (in rem for accessibility)
+$font-size-xs: 0.875rem;       // 14px - small labels
+$font-size-sm: 1rem;           // 16px - body text
+$font-size-base: 1.125rem;     // 18px - base
+$font-size-md: 1.25rem;        // 20px - card titles
+$font-size-lg: 1.5rem;         // 24px - section headers
+$font-size-xl: 1.875rem;       // 30px - page title
+$font-size-2xl: 2.25rem;       // 36px - main header
+
+// Font Weights
+$font-light: 300;
+$font-normal: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+
+// SPACING SYSTEM - 8px base grid
+$space-xs: 0.5rem;             // 8px
+$space-sm: 0.75rem;            // 12px
+$space-md: 1rem;               // 16px
+$space-lg: 1.5rem;             // 24px
+$space-xl: 2rem;               // 32px
+$space-2xl: 3rem;              // 48px
+$space-3xl: 4rem;              // 64px
+
+// RADIUS - Modern, subtle
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-full: 9999px;
+
+// SHADOWS - Depth & elevation
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+
+// Elevation system for cards and containers
+$elevation-1: $shadow-md;
+$elevation-2: $shadow-lg;
+$elevation-3: $shadow-xl;
+
+// TRANSITIONS - Smooth, purposeful
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;
+$transition-slow: 350ms ease;
+
+// BREAKPOINTS - Mobile-first responsive design
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+// Media query mixins
+@mixin mobile-only {
+  @media (max-width: ($breakpoint-sm - 1px)) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+// UTILITY MIXINS
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin line-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin smooth-transition($property: all) {
+  transition: $property $transition-base;
+}
+
+@mixin button-reset {
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+@mixin focus-ring {
+  outline: 2px solid $primary-orange;
+  outline-offset: 2px;
+}
+
+@mixin glass-effect {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}

@@ -1,0 +1,382 @@
+// =============================================
+// EVENT CARD STYLES - Modern & Professional
+// =============================================
+
+@import '../base/design-system';
+
+// Event Card Container
+.event-card {
+  background: $card-bg;
+  border-radius: $radius-xl;
+  box-shadow: $elevation-2;
+  overflow: hidden;
+  @include smooth-transition(all);
+  
+  &:hover {
+    box-shadow: $elevation-3;
+    transform: translateY(-2px);
+  }
+
+  @include mobile-only {
+    margin: $space-md 0;
+  }
+
+  @include tablet-up {
+    margin: $space-lg 0;
+  }
+}
+
+// Event Card Header with accent bar
+.event-card__header {
+  padding: $space-lg;
+  border-left: 4px solid $primary-orange;
+  background: linear-gradient(135deg, rgba($primary-orange, 0.02) 0%, transparent 100%);
+  
+  @include tablet-up {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+// Event Card Title
+.event-card__title {
+  margin: 0 0 $space-sm 0;
+  color: $text-dark;
+  font-family: $font-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-bold;
+  line-height: 1.3;
+  @include line-clamp(2);
+
+  @include mobile-only {
+    font-size: $font-size-md;
+  }
+}
+
+// Event Card Category Badge
+.event-card__category {
+  display: inline-block;
+  background: $info-cyan;
+  color: $text-dark;
+  padding: $space-xs $space-md;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-semibold;
+  margin-top: $space-sm;
+  text-transform: capitalize;
+}
+
+// Event Card Description
+.event-card__description {
+  padding: 0 $space-lg $space-lg $space-lg;
+  
+  p {
+    margin: 0;
+    color: $text-light;
+    font-size: $font-size-sm;
+    line-height: 1.6;
+    @include line-clamp(3);
+  }
+}
+
+// Event Card Details Section
+.event-card__details {
+  padding: $space-lg;
+  border-top: 1px solid $border-light;
+  background: rgba($text-dark, 0.02);
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-md;
+
+  @include mobile-only {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Individual Detail Item
+.event-card__detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-sm;
+  
+  svg {
+    color: $primary-orange;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  p {
+    margin: 0;
+    color: $text-dark;
+    font-size: $font-size-sm;
+    
+    &.label {
+      color: $text-muted;
+      font-weight: $font-medium;
+      margin-bottom: 2px;
+    }
+
+    &.value {
+      font-weight: $font-semibold;
+    }
+  }
+}
+
+// Event Card Footer with CTA
+.event-card__footer {
+  padding: $space-lg;
+  border-top: 1px solid $border-light;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba($primary-blue, 0.01);
+
+  @include mobile-only {
+    flex-direction: column;
+    gap: $space-md;
+    align-items: flex-start;
+  }
+}
+
+// Cost Badge
+.event-card__cost {
+  display: inline-block;
+  padding: $space-sm $space-md;
+  background: $success-green;
+  color: white;
+  border-radius: $radius-md;
+  font-size: $font-size-xs;
+  font-weight: $font-semibold;
+  text-transform: capitalize;
+
+  &.paid {
+    background: $warning-yellow;
+    color: $text-dark;
+  }
+}
+
+// Call-to-Action Arrow
+.event-card__cta-arrow {
+  color: $primary-pink;
+  font-size: $font-size-xl;
+  @include smooth-transition(transform);
+
+  .event-card:hover & {
+    transform: translateX(4px);
+  }
+}
+
+// =============================================
+// EVENT CARD LIST ITEM (List View)
+// =============================================
+
+.event-list-item {
+  background: $card-bg;
+  border-radius: $radius-lg;
+  padding: $space-lg;
+  margin-bottom: $space-md;
+  border-left: 3px solid $primary-orange;
+  box-shadow: $elevation-1;
+  display: flex;
+  gap: $space-lg;
+  @include smooth-transition(all);
+
+  &:hover {
+    box-shadow: $elevation-2;
+    transform: translateX(4px);
+  }
+
+  @include mobile-only {
+    flex-direction: column;
+    gap: $space-md;
+  }
+}
+
+.event-list-item__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.event-list-item__title {
+  margin: 0 0 $space-sm 0;
+  color: $text-dark;
+  font-size: $font-size-md;
+  font-weight: $font-bold;
+  @include truncate;
+}
+
+.event-list-item__meta {
+  display: flex;
+  gap: $space-lg;
+  flex-wrap: wrap;
+  margin-bottom: $space-md;
+
+  @include mobile-only {
+    gap: $space-md;
+  }
+}
+
+.event-list-item__meta-item {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  color: $text-light;
+  font-size: $font-size-sm;
+
+  svg {
+    color: $primary-orange;
+  }
+}
+
+.event-list-item__actions {
+  display: flex;
+  gap: $space-md;
+  align-items: center;
+
+  @include mobile-only {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+// =============================================
+// EVENT CARD DETAIL PAGE
+// =============================================
+
+.event-card-detail {
+  background: $card-bg;
+  border-radius: $radius-xl;
+  box-shadow: $elevation-2;
+  overflow: hidden;
+  padding: $space-2xl;
+
+  @include mobile-only {
+    padding: $space-lg;
+    border-radius: $radius-lg;
+  }
+}
+
+.event-detail__header {
+  margin-bottom: $space-2xl;
+  padding-bottom: $space-2xl;
+  border-bottom: 1px solid $border-light;
+
+  h1 {
+    margin: 0 0 $space-md 0;
+    color: $text-dark;
+    font-size: $font-size-2xl;
+    font-weight: $font-bold;
+
+    @include mobile-only {
+      font-size: $font-size-xl;
+    }
+  }
+}
+
+.event-detail__meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-xl;
+  margin-bottom: $space-xl;
+
+  @include mobile-only {
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+  }
+}
+
+.event-detail__meta-block {
+  h3 {
+    margin: 0 0 $space-sm 0;
+    color: $text-muted;
+    font-size: $font-size-xs;
+    font-weight: $font-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    margin: 0;
+    color: $text-dark;
+    font-size: $font-size-base;
+    line-height: 1.6;
+  }
+}
+
+.event-detail__description {
+  margin-bottom: $space-xl;
+
+  p {
+    margin: 0 0 $space-md 0;
+    color: $text-dark;
+    font-size: $font-size-sm;
+    line-height: 1.8;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.event-detail__actions {
+  display: flex;
+  gap: $space-md;
+  flex-wrap: wrap;
+
+  @include mobile-only {
+    flex-direction: column;
+  }
+}
+
+// =============================================
+// EMPTY STATE
+// =============================================
+
+.event-card-empty {
+  background: rgba($text-light, 0.05);
+  border-radius: $radius-lg;
+  padding: $space-3xl $space-lg;
+  text-align: center;
+
+  h2 {
+    margin: 0 0 $space-md 0;
+    color: $text-dark;
+    font-size: $font-size-lg;
+  }
+
+  p {
+    margin: 0;
+    color: $text-muted;
+    font-size: $font-size-sm;
+  }
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+// Back Link
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-sm;
+  margin-bottom: $space-lg;
+  color: $primary-orange;
+  text-decoration: none;
+  font-weight: $font-medium;
+  @include smooth-transition(all);
+
+  &:hover {
+    gap: $space-md;
+  }
+
+  &:focus {
+    @include focus-ring;
+  }
+}

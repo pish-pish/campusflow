@@ -1,71 +1,101 @@
-// Colors
-$dark-grey: #A95C43;
-$blue:  #94f0f1;
-$dark-blue:#24305e;
-$pink: #FFB0C3;
-$off-white: white;
-$dark-red: #ac3b61;
-$brown: #E1956F;
-$color_white: #fff;
-$color_prime: #5ad67d;
-$color_grey: #e2e2e2;
-$color_grey_dark: #a2a2a2;
+// NEW: Modern design tokens
 
-$skin: #edc7bc;
-$cream: #eee2dc;
-$grey: #74AEC4;
+// ============================================
+// CORE COLORS (Semantic Naming)
+// ============================================
+$primary: #6366f1;      // Indigo
+$secondary: #8b5cf6;    // Purple  
+$accent: #f97316;       // Orange
+$success: #22c55e;
+$danger: #ef4444;
+$surface: #1e1e2e;      // Dark surface
+$surface-elevated: #2a2a3e;
+$text-primary: #f8fafc;
+$text-secondary: #94a3b8;
 
-$color_white: #fff;
-$color_prime: #5ad67d;
-$color_grey: #e2e2e2;
-$color_grey_dark: #a2a2a2;
+// ============================================
+// CSS CUSTOM PROPERTIES (For Theming)
+// ============================================
+:root {
+  // Colors
+  --color-primary: #{$primary};
+  --color-secondary: #{$secondary};
+  --color-accent: #{$accent};
+  --color-success: #{$success};
+  --color-danger: #{$danger};
+  --color-surface: #{$surface};
+  --color-surface-elevated: #{$surface-elevated};
+  --color-text-primary: #{$text-primary};
+  --color-text-secondary: #{$text-secondary};
+  
+  // Spacing Scale (8px base unit)
+  --spacing-xs: 0.25rem;    // 4px
+  --spacing-sm: 0.5rem;     // 8px
+  --spacing-md: 1rem;       // 16px
+  --spacing-lg: 1.5rem;     // 24px
+  --spacing-xl: 2rem;       // 32px
+  --spacing-2xl: 3rem;      // 48px
+  --spacing-3xl: 4rem;      // 64px
+  
+  // Border Radius
+  --radius-sm: 0.25rem;     // 4px
+  --radius-md: 0.5rem;      // 8px
+  --radius-lg: 0.75rem;     // 12px
+  --radius-xl: 1rem;        // 16px
+  --radius-full: 9999px;    // Full circle
+  
+  // Shadows
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  // Typography
+  --font-size-sm: 0.875rem;   // 14px
+  --font-size-base: 1rem;     // 16px
+  --font-size-lg: 1.125rem;   // 18px
+  --font-size-xl: 1.25rem;    // 20px
+  --font-size-2xl: 1.5rem;    // 24px
+  --font-size-3xl: 1.875rem;  // 30px
+  --font-size-4xl: 2.25rem;   // 36px
+}
 
-$dark-grey:#2E3740;
-//Colours
-$red: #e74c3c;
-    
+// ============================================
+// SASS VARIABLES (For SCSS usage)
+// ============================================
 
+// Spacing Scale (8px base unit)
+$spacing-xs: 0.25rem;    // 4px
+$spacing-sm: 0.5rem;     // 8px
+$spacing-md: 1rem;       // 16px
+$spacing-lg: 1.5rem;     // 24px
+$spacing-xl: 2rem;       // 32px
+$spacing-2xl: 3rem;      // 48px
+$spacing-3xl: 4rem;      // 64px
 
-$green: #8bf0ba;
-$peach: #A07178;
-$yellow: #ffdc6a;
-$pink: #f2b1d8;
-$orange:#f76c6c;
-$voilet:#374785;
-$light-blue:#a8d0e6;
-$purple: #bb86fc;
+// Border Radius
+$radius-sm: 0.25rem;     // 4px
+$radius-md: 0.5rem;      // 8px
+$radius-lg: 0.75rem;     // 12px
+$radius-xl: 1rem;        // 16px
+$radius-full: 9999px;    // Full circle
 
-$m: rgb(240, 75, 113);
-$f: #ab47bc;
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
-$papaya:#e24e42;
-$mustard: #e9b000;
-$blush: #eb6e80;
-$aqua:#008f95;
+// Typography
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;     // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+$font-size-2xl: 1.5rem;    // 24px
+$font-size-3xl: 1.875rem;  // 30px
+$font-size-4xl: 2.25rem;   // 36px
 
-$regal-blue: #034378;
-$san-juan: #2d4e68;
-$bermuda: #77d7b9;
-$white: #fff;
-$black: #000;
-$open-sans: 'Open Sans',sans-serif;
-
-// Font Size
-$font-size-large: 1.8rem;
-$font-size-xl: 2.3rem;
-$font-size-2x: 3rem;
-$font-size-small: 1.4rem;
-$font-size-medium: 1.6rem;
-// Spacing
-$xs-size: 0.5rem;
-$s-size: 1.2rem;
-$m-size: 1.6rem;
-$l-size: 3.2rem;
-$xl-size: 4.8rem;
-$desktop-breakpoint: 60rem;
-
-
-
-
-
-
+// Breakpoints
+$desktop-breakpoint: 60rem;  // 960px

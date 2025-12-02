@@ -1,46 +1,151 @@
-* {
+// ============================================
+// MODERN CSS RESET
+// ============================================
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
+// ============================================
+// HTML & BODY
+// ============================================
 html {
-  font-size: 62.5%;
-  outline: none;
-
+  font-size: 62.5%; // 1rem = 10px
+  scroll-behavior: smooth; // Smoother scrolling
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
-  background: #2E3740;
-  color: $dark-red;
+  background: var(--color-surface, #{$surface});
+  color: var(--color-text-primary, #{$text-primary});
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: $m-size;
+  font-size: var(--font-size-base, #{$font-size-base});
   line-height: 1.6;
-  // background: #222831;
-
-
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
+// ============================================
+// TYPOGRAPHY
+// ============================================
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text-primary, #{$text-primary});
+}
+
+p {
+  margin-bottom: var(--spacing-md, #{$spacing-md});
+}
+
+// ============================================
+// LINKS - Better Default Styles
+// ============================================
+a {
+  color: var(--color-primary, #{$primary});
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  
+  &:hover {
+    color: var(--color-secondary, #{$secondary});
+    opacity: 0.9;
+  }
+  
+  &:active {
+    opacity: 0.8;
+  }
+  
+  // Focus-visible for accessibility
+  &:focus-visible {
+    outline: 2px solid var(--color-primary, #{$primary});
+    outline-offset: 2px;
+    border-radius: var(--radius-sm, #{$radius-sm});
+  }
+  
+  &:visited {
+    color: var(--color-secondary, #{$secondary});
+  }
+}
+
+// ============================================
+// BUTTONS - Better Default Styles
+// ============================================
 button {
   cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  padding: 0;
+  transition: all 0.2s ease;
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  // Focus-visible for accessibility
+  &:focus-visible {
+    outline: 2px solid var(--color-primary, #{$primary});
+    outline-offset: 2px;
+    border-radius: var(--radius-sm, #{$radius-sm});
+  }
 }
 
-button:disabled {
-  cursor: default;
+// ============================================
+// FORM ELEMENTS - Better Defaults
+// ============================================
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  
+  &:focus-visible {
+    outline: 2px solid var(--color-primary, #{$primary});
+    outline-offset: 2px;
+    border-radius: var(--radius-sm, #{$radius-sm});
+  }
 }
+
+// ============================================
+// IMAGES
+// ============================================
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// ============================================
+// LISTS
+// ============================================
+ul,
+ol {
+  list-style: none;
+}
+
+// ============================================
+// UTILITY CLASSES
+// ============================================
 .is-active {
-  font-weight: bold;
-}
-
-a
-{
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-a:visited {
-  color:none;
+  font-weight: 600;
+  color: var(--color-primary, #{$primary});
 }
 
 .visually-hidden {
@@ -51,5 +156,40 @@ a:visited {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  border: 0;
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// ============================================
+// SCROLLBAR STYLING (Optional - Modern browsers)
+// ============================================
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface, #{$surface});
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-elevated, #{$surface-elevated});
+  border-radius: var(--radius-full, #{$radius-full});
+  
+  &:hover {
+    background: var(--color-text-secondary, #{$text-secondary});
+  }
+}
+
+// ============================================
+// SELECTION STYLING
+// ============================================
+::selection {
+  background: var(--color-primary, #{$primary});
+  color: var(--color-text-primary, #{$text-primary});
+}
+
+::-moz-selection {
+  background: var(--color-primary, #{$primary});
+  color: var(--color-text-primary, #{$text-primary});
 }
